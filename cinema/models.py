@@ -52,7 +52,8 @@ class Movie(models.Model):
 class MovieSession(models.Model):
     show_time = models.DateTimeField()
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    cinema_hall = models.ForeignKey(CinemaHall, on_delete=models.CASCADE)
+    cinema_hall = models.ForeignKey(CinemaHall,
+                                    on_delete=models.CASCADE)
 
     class Meta:
         ordering = ["-show_time"]
@@ -63,7 +64,8 @@ class MovieSession(models.Model):
 
 class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.created_at)
