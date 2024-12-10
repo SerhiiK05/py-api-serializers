@@ -17,7 +17,8 @@ class CinemaHall(models.Model):
 
 
 class Genre(models.Model):
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255,
+                            unique=True)
 
     def __str__(self):
         return self.name
@@ -76,9 +77,12 @@ class Order(models.Model):
 
 class Ticket(models.Model):
     movie_session = models.ForeignKey(
-        MovieSession, on_delete=models.CASCADE, related_name="tickets"
+        MovieSession,
+        on_delete=models.CASCADE,
+        related_name="tickets"
     )
-    order = models.ForeignKey(Order, on_delete=models.CASCADE,
+    order = models.ForeignKey(Order,
+                              on_delete=models.CASCADE,
                               related_name="tickets")
     row = models.IntegerField()
     seat = models.IntegerField()
